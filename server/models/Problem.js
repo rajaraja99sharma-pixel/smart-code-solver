@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-
+//const mongoose = require("mongoose");
+import mongoose from "mongoose";
 const problemSchema = new mongoose.Schema({
   title: String,
   description: String,
@@ -8,5 +8,4 @@ const problemSchema = new mongoose.Schema({
   solution:String,
   explaination:String
 });
-
-module.exports = mongoose.model("Problem", problemSchema);
+export default mongoose.model("Problem", problemSchema);

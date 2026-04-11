@@ -1,13 +1,21 @@
 console.log("SERVER FILE RUNNING...");
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");
-const Problem = require("./models/Problem");
+import express from "express";
+import mongoose from "mongoose";
+import cors from "cors";
+import authRoutes from "./routes/auth.js";
+import userRoutes from "./routes/userRoutes.js";
+import Problem from "./models/Problem.js";
+//const express = require("express");
+//const mongoose = require("mongoose");
+//const cors = require("cors");
+//const Problem = require("./models/Problem");
 
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+app.use("/api/auth",authRoutes);
 
 /* 🔗 MongoDB Connection */
 mongoose.connect("mongodb://127.0.0.1:27017/codesolver") 
@@ -58,6 +66,8 @@ app.post("/api/problems", async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 });
+//const userRoutes=require("./routes/userRoutes");
+app.use("/api/users",userRoutes);
 
 
 /* 🚀 Start Server (LAST) */
