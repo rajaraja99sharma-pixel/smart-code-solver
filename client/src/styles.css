@@ -1,0 +1,158 @@
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #f5f5f5;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+/* LEFT PANEL */
+.sidebar {
+  width: 35%;
+  background: white;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  overflow-y: auto;
+}
+
+.title {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* FILTER BUTTONS */
+.filters button {
+  margin: 5px;
+  padding: 8px 12px;
+  border: none;
+  cursor: pointer;
+  background: #ddd;
+}
+
+.filters .active {
+  background: black;
+  color: white;
+}
+
+/* PROBLEM LIST */
+.problem {
+  padding: 15px;
+  border-bottom: 1px solid #eee;
+  cursor: pointer;
+}
+
+.problem:hover {
+  background: #f0f0f0;
+}
+
+.easy { color: green; }
+.medium { color: orange; }
+.hard { color: red; }
+
+/* RIGHT PANEL */
+.main {
+  width: 65%;
+  padding: 30px;
+  overflow-y: auto;
+}
+
+.code-box {
+  background: #222;
+  color: #0f0;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/* BACK BUTTON */
+.back {
+  padding: 8px 12px;
+  background: black;
+  color: white;
+  border: none;
+  cursor: pointer;
+}
+body {
+  margin: 0;
+  font-family: Arial;
+}
+
+/* LANDING PAGE */
+.landing {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+}
+
+.landing h1 {
+  font-size: 40px;
+}
+
+.buttons {
+  margin-top: 20px;
+}
+
+.buttons button {
+  margin: 10px;
+  padding: 12px 25px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.buttons button:hover {
+  transform: scale(1.1);
+}
+
+/* LOGIN CARD */
+.center {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card {
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px gray;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* HOME */
+.container {
+  display: flex;
+}
+
+.sidebar {
+  width: 30%;
+  background: #111;
+  color: white;
+  padding: 20px;
+  height: 100vh;
+  overflow-y: auto;
+}
+
+.problem {
+  padding: 10px;
+  border-bottom: 1px solid gray;
+  cursor: pointer;
+}
+
+.problem:hover {
+  background: #333;
+}
+
+.main {
+  width: 70%;
+  padding: 20px;
+}
