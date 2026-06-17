@@ -1,0 +1,26 @@
+.container {
+  display: flex;
+}
+
+.sidebar {
+  width: 30%;
+  background: #111;
+  color: white;
+  height: 100vh;
+  padding: 20px;
+}
+
+.problem {
+  padding: 10px;
+  border-bottom: 1px solid gray;
+  cursor: pointer;
+}
+
+.problem:hover {
+  background: #333;
+}
+
+.main {
+  width: 70%;
+  padding: 20px;
+}

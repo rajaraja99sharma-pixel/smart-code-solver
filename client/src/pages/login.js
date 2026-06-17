@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import "../styles/login.css";
 function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
   const [showPassword,setShowPassword]=useState(false);
@@ -9,12 +9,11 @@ function Login() {
  
 
   const handleLogin = async () => {
-   // const res = await axios.post("http://localhost:5000/api/auth/login", form);
    try{
     const res = await axios.post("http://localhost:5000/api/auth/login", form);
-    localStorage.setItem("user", JSON.stringify(res.data));
-
-    if (res.data.role === "admin") {
+    localStorage.setItem("user", JSON.stringify(res.data.user));
+    localStorage.setItem("token",res.data.token);
+    if (res.data.user.role === "admin") {
       navigate("/admin");
     } else {
       navigate("/home");
@@ -26,41 +25,38 @@ function Login() {
   };
 
   return (
-    <div className="center">
-      <div className="card">
-      <h2>Login</h2>
+<div className="login-container">
 
- <button onClick={()=>navigate("/")}>
-    Back
-  </button>
+      <div className="login-card">
+        <h2>Login</h2>
 
-       <input placeholder="Email"
-        onChange={e => setForm({ ...form, email: e.target.value })}
-      /> 
-      <div style={{ position: "relative" }}>
-  <input
-    type={showPassword ? "text" : "password"}
-    placeholder="Password"
-    onChange={(e) => setForm({...form,password:e.target.value})}
-  />
+        <input
+          type="email"
+          placeholder="Enter Email"
+          onChange={(e) => setForm({ ...form, email: e.target.value })}
+        />
 
-  <span
-    onClick={() => setShowPassword(!showPassword)}
-    style={{
-      position: "absolute",
-      right: "10px",
-      top: "8px",
-      cursor: "pointer"
-    }}
-  >
-    {showPassword ? "🙈" : "👁️"}
-  </span>
-</div>
+        <div className="password-box">
+          <input
+            type={showPassword ? "text" : "password"}
+            placeholder="Enter Password"
+            onChange={(e) => setForm({ ...form, password: e.target.value })}
+          />
 
-      <button onClick={handleLogin}>Login</button>
-    </div>
+          <i
+            className={showPassword ? "fa-solid fa-eye-slash" : "fa-solid fa-eye"}
+            onClick={() => setShowPassword(!showPassword)}
+          ></i>
+        </div>
+
+        <button onClick={handleLogin}>Login</button>
+
+        <p className="back" onClick={() => navigate("/")}>
+          ← Back
+        </p>
+      </div>
+
     </div>
   );
 }
-
 export default Login;

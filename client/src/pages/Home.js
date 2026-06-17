@@ -1,67 +1,32 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import"../styles/home.css";
 import { useNavigate } from "react-router-dom";
 function Home({}) {
   const [problems, setProblems] = useState([]);
    const[filter,setFilter]=useState("All");
+   const[solved,setSolved]=useState([]);
    const navigate=useNavigate();
   useEffect(() => {
     axios.get("http://localhost:5000/api/problems")
       .then(res =>setProblems(res.data))
     .catch(err => console.log(err));
   }, []);
-  //const filtered=problems.filter(p=> filter=="All"||p.difficulty===filter);
+  useEffect(() => {
+  const user = JSON.parse(localStorage.getItem("user"));
+
+  if (!user) return;
+
+  axios.get(`http://localhost:5000/api/solved/${user._id}`)
+    .then(res => setSolved(res.data))
+    .catch(err => console.log(err));
+
+}, []);
   const filtered =
   filter==="All"
   ? problems
   :problems.filter(p=>p.difficulty.toLowerCase()===filter.toLowerCase());
-  //<button onClick={()=> navigate("/login")}>
-   // login
-  //</button>
-  //navigate("/admin");
   return (
-    //<div style={{ padding: "20px" }}>
-      //<h1>Smart Code Solver 🚀</h1>
-
-      //{/* FILTER */}
-      //<div style={{ marginBottom: "15px", cursor:"pointer"}}>
-        //{["All", "Easy", "Medium", "Hard"].map(f => (
-         // <button
-           // key={f}
-           // onClick={() => setFilter(f)}
-           // style={{
-             // marginRight: "10px",
-             // padding: "5px 10px",
-             // background: filter === f ? "black" : "gray",
-             // color: "white",
-             // border: "none",
-             // cursor:"pointer"
-            //}}
-         // >
-          //  {f}
-          //</button>
-        //))}
-      //</div>
-
-      //{/* PROBLEM LIST */}
-      //{filtered.map(p => (
-        //<div
-         // key={p._id}
-          //onClick={() => setSelectedId(p._id)}
-          //style={{
-            //padding: "10px",
-            //borderBottom: "1px solid #ccc",
-            //cursor: "pointer"
-          //}}
-       // >
-         // <h3>{p.title}</h3>
-          //<span>{p.difficulty}</span>
-        //</div>
-      //))}
-    //</div>
-  //);
-//}
 <div className="container">
   {/* TOP BAR */}
 
@@ -93,6 +58,12 @@ function Home({}) {
               <span style={{ color: "gray", marginRight: "8px" }}>
                {index + 1}.
                   </span>
+                   {/* ✅ SOLVED TICK */}
+  {solved.includes(p._id) && (
+    <span style={{ color: "limegreen", marginRight: "6px" }}>
+      ✔️
+    </span>
+  )}
               {p.title}
               </h3>
             <p className={p.difficulty.toLowerCase()}>

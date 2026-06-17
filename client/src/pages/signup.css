@@ -10,7 +10,7 @@
 
 /* Card */
 .card {
-  background: white;
+  background: black;
   padding: 30px;
   width: 350px;
   border-radius: 15px;
@@ -69,4 +69,94 @@
   margin-top: 15px;
   color: #4facfe;
   cursor: pointer;
+}
+/* FULL SCREEN BACKGROUND */
+.auth-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #4f46e5, #9333ea);
+  font-family: Arial, sans-serif;
+}
+
+/* CARD */
+.auth-card {
+  background: white;
+  padding: 30px;
+  width: 350px;
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+/* TITLE */
+.auth-card h2 {
+  margin-bottom: 20px;
+  color: #333;
+}
+
+/* INPUTS */
+.auth-card input {
+  width: 100%;
+  padding: 10px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  outline: none;
+  font-size: 14px;
+}
+
+/* PASSWORD BOX */
+.password-box {
+  position: relative;
+}
+
+.password-box span {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  font-size: 14px;
+}
+.password-box i{
+  margin-top: 10px;
+    margin-right: -20px;
+}
+
+/* BUTTON */
+.auth-card button {
+  width: 100%;
+  padding: 10px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 8px;
+  background: #4f46e5;
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.auth-card button:hover {
+  background: #4338ca;
+}
+
+/* ERROR */
+.error {
+  color: red;
+  font-size: 13px;
+  margin-top: 5px;
+}
+
+/* SWITCH TEXT */
+.switch-text {
+  margin-top: 15px;
+  font-size: 14px;
+}
+
+.switch-text span {
+  color: #4f46e5;
+  cursor: pointer;
+  font-weight: bold;
 }

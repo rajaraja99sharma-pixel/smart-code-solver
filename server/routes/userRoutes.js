@@ -1,17 +1,29 @@
-const express = require("express");
+
+import express from "express";
+import User from "../models/user.js";
+
 const router = express.Router();
-const User = require("../models/user");
 
-router.post("/login", async (req, res) => {
-  const { email, password } = req.body;
-
-  const user = await User.findOne({ email, password });
-
-  if (!user) {
-    return res.status(401).json({ msg: "Invalid credentials" });
+//  GET ALL USERS
+router.get("/", async (req, res) => {
+  try {
+    const users = await User.find();
+    res.json(users);
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: err.message });
   }
-
-  res.json(user);
 });
 
-module.exports = router;
+//  DELETE USER
+router.delete("/:id", async (req, res) => {
+  try {
+    await User.findByIdAndDelete(req.params.id);
+    res.json({ msg: "User deleted" });
+  } catch (err) {
+    console.log(err);
+    res.status(500).json({ error: err.message });
+  }
+});
+
+export default router;
